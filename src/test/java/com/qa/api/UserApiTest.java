@@ -1,8 +1,6 @@
 package com.qa.api;
 
-import io.restassured.RestAssured;
 import io.restassured.response.Response;
-import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -10,12 +8,8 @@ import static io.restassured.RestAssured.*;
 import static org.hamcrest.Matchers.*;
 import static org.junit.jupiter.api.Assertions.*;
 
-public class UserApiTest {
+public class UserApiTest extends BaseApiTest {
 
-   @BeforeAll
-   public static void setup() {
-       RestAssured.baseURI = "https://jsonplaceholder.typicode.com";
-   }
 
    @Test
    @DisplayName("GET /users - Should return status code 200")
