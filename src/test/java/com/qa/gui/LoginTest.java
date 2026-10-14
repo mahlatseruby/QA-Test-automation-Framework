@@ -1,10 +1,10 @@
 package com.qa.gui;
 
+import com.qa.pages.LoginPage;
+import com.qa.pages.ProductsPage;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.junit.jupiter.api.*;
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 
@@ -15,43 +15,38 @@ import static org.junit.jupiter.api.Assertions.*;
 public class LoginTest {
 
     private WebDriver driver;
+    private LoginPage loginPage;
+    private ProductsPage productsPage;
 
     @BeforeEach
     void setUp() {
         WebDriverManager.chromedriver().setup();
 
         ChromeOptions options = new ChromeOptions();
-        // options.addArguments("--headless"); // uncomment if you want headless
         options.addArguments("--start-maximized");
 
         driver = new ChromeDriver(options);
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+
+        driver.get("https://www.saucedemo.com/");
+
+        loginPage = new LoginPage(driver);
+        productsPage = new ProductsPage(driver);
     }
 
     @Test
-    @DisplayName("Should open Sauce Demo login page successfully")
-    void testOpenLoginPage() {
-        driver.get("https://www.saucedemo.com/");
+    @DisplayName("Should login successfully using Page Object Model")
+    void testSuccessfulLoginWithPOM() {
+        loginPage.loginAs("standard_user", "secret_sauce");
 
-        String title = driver.getTitle();
-        assertTrue(title.contains("Swag Labs"));
-
-        WebElement usernameField = driver.findElement(By.id("user-name"));
-        assertTrue(usernameField.isDisplayed());
+        assertTrue(productsPage.isProductsPageDisplayed());
+        assertEquals("Products", productsPage.getPageTitle());
     }
 
     @Test
-    @DisplayName("Should login successfully with valid credentials")
-    void testSuccessfulLogin() {
-        driver.get("https://www.saucedemo.com/");
-
-        driver.findElement(By.id("user-name")).sendKeys("standard_user");
-        driver.findElement(By.id("password")).sendKeys("secret_sauce");
-        driver.findElement(By.id("login-button")).click();
-
-        // After login we should see the products page
-        WebElement productsTitle = driver.findElement(By.className("title"));
-        assertEquals("Products", productsTitle.getText());
+    @DisplayName("Login page should display login button")
+    void testLoginPageElements() {
+        assertTrue(loginPage.isLoginButtonDisplayed());
     }
 
     @AfterEach
