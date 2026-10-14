@@ -55,4 +55,23 @@ public class LoginTest {
             driver.quit();
         }
     }
+
+        @Test
+    @DisplayName("Should show error with invalid credentials")
+    void testLoginWithInvalidCredentials() {
+        loginPage.loginAs("wrong_user", "wrong_password");
+
+        // We should still be on the login page
+        assertTrue(loginPage.isLoginButtonDisplayed());
+        assertFalse(productsPage.isProductsPageDisplayed());
+    }
+
+        @Test
+    @DisplayName("Should show error with invalid credentials")
+    void testLoginWithInvalidCredentials() {
+        loginPage.loginAs("wrong_user", "wrong_password");
+
+        assertTrue(loginPage.isErrorMessageDisplayed());
+        assertTrue(loginPage.getErrorMessage().contains("Username and password do not match"));
+    }
 }

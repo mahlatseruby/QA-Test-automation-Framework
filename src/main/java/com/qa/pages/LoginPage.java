@@ -42,4 +42,19 @@ public class LoginPage extends BasePage {
     public boolean isLoginButtonDisplayed() {
         return loginButton.isDisplayed();
     }
+
+        @FindBy(css = "[data-test='error']")
+    private WebElement errorMessage;
+
+    public String getErrorMessage() {
+        return errorMessage.getText();
+    }
+
+    public boolean isErrorMessageDisplayed() {
+        try {
+            return errorMessage.isDisplayed();
+        } catch (Exception e) {
+            return false;
+        }
+    }
 }
