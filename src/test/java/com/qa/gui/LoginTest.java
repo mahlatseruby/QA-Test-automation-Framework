@@ -49,29 +49,22 @@ public class LoginTest {
         assertTrue(loginPage.isLoginButtonDisplayed());
     }
 
+    @Test
+    @DisplayName("Should show error with invalid credentials")
+    void testLoginWithInvalidCredentials() {
+        loginPage.loginAs("wrong_user", "wrong_password");
+
+        // Only check things that exist on the login page after failed login
+        assertTrue(loginPage.isLoginButtonDisplayed());
+        assertTrue(loginPage.isErrorMessageDisplayed());
+        assertTrue(loginPage.getErrorMessage().toLowerCase().contains("epic sadface")
+                || loginPage.getErrorMessage().toLowerCase().contains("username and password do not match"));
+    }
+
     @AfterEach
     void tearDown() {
         if (driver != null) {
             driver.quit();
         }
-    }
-
-        @Test
-    @DisplayName("Should show error with invalid credentials")
-    void testLoginWithInvalidCredentials() {
-        loginPage.loginAs("wrong_user", "wrong_password");
-
-        // We should still be on the login page
-        assertTrue(loginPage.isLoginButtonDisplayed());
-        assertFalse(productsPage.isProductsPageDisplayed());
-    }
-
-        @Test
-    @DisplayName("Should show error with invalid credentials")
-    void testLoginWithInvalidCredentials() {
-        loginPage.loginAs("wrong_user", "wrong_password");
-
-        assertTrue(loginPage.isErrorMessageDisplayed());
-        assertTrue(loginPage.getErrorMessage().contains("Username and password do not match"));
     }
 }

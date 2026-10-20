@@ -1,1 +1,7 @@
+com\qa\api\PostApiTest.class
 com\qa\unit\UserServiceTest.class
+com\qa\unit\UserValidatorTest.class
+com\qa\api\UserApiTest.class
+com\qa\gui\LoginTest.class
+com\qa\api\BaseApiTest.class
+com\qa\unit\ValidationUtilsTest.class

@@ -1,19 +1,53 @@
 # QA Test Automation Framework
 
-A professional Java-based Test Automation Framework focused on **Unit Testing** using JUnit 5.
+A complete Java-based Test Automation Framework demonstrating professional QA practices.
 
-## Project Overview
-This project demonstrates solid unit testing practices including:
-- Test Driven Development concepts
-- Arrange-Act-Assert (AAA) pattern
-- Data-driven testing with `@ParameterizedTest`
-- Clean code and proper package structure
+## Overview
+This project covers the full testing pyramid:
+- Unit Testing
+- API Testing
+- UI (GUI) Testing
+
+It follows clean code principles, the Arrange-Act-Assert pattern, data-driven testing, and the Page Object Model.
 
 ## Tech Stack
-- Java 17+
-- JUnit 5
-- Maven
-- RestAssured (coming next)
-- Selenium (planned)
+- **Language:** Java 17+
+- **Build Tool:** Maven
+- **Unit Testing:** JUnit 5
+- **API Testing:** RestAssured
+- **UI Testing:** Selenium WebDriver + WebDriverManager
+- **Design Pattern:** Page Object Model (POM)
 
 ## Project Structure
+src/
+├── main/java/com/qa/
+│   ├── model/
+│   ├── pages/          # Page Object Model
+│   ├── service/
+│   └── utils/
+└── test/java/com/qa/
+├── unit/           # JUnit unit tests
+├── api/            # RestAssured API tests
+└── gui/            # Selenium UI tests
+
+
+## Features
+- Data-driven unit tests using `@ParameterizedTest`
+- Clean Page Object Model implementation
+- Positive and negative test scenarios
+- API testing (GET, POST, PUT, DELETE)
+- UI login flow automation (Sauce Demo)
+
+## How to Run
+```bash
+# Run all tests
+mvn clean test
+
+# Run only unit tests
+mvn test -Dtest=com.qa.unit.**
+
+# Run only API tests
+mvn test -Dtest=com.qa.api.**
+
+# Run only GUI tests
+mvn test -Dtest=com.qa.gui.**

@@ -1,2 +1,7 @@
-com\qa\model\User.class
+com\qa\pages\LoginPage.class
+com\qa\pages\BasePage.class
+com\qa\utils\ValidationUtils.class
 com\qa\service\UserService.class
+com\qa\utils\UserValidator.class
+com\qa\model\User.class
+com\qa\pages\ProductsPage.class
