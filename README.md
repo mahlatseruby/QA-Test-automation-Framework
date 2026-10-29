@@ -39,15 +39,15 @@ src/
 - UI login flow automation (Sauce Demo)
 
 ## How to Run
-```bash
+
 # Run all tests
 mvn clean test
 
 # Run only unit tests
-mvn test -Dtest=com.qa.unit.**
+mvn test "-Dtest=UserServiceTest,UserValidatorTest,ValidationUtilsTest"
 
 # Run only API tests
-mvn test -Dtest=com.qa.api.**
+mvn test "-Dtest=UserApiTest,PostApiTest"
 
 # Run only GUI tests
-mvn test -Dtest=com.qa.gui.**
+mvn test "-Dtest=LoginTest"
