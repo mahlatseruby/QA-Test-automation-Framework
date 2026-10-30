@@ -51,3 +51,5 @@ mvn test "-Dtest=UserApiTest,PostApiTest"
 
 # Run only GUI tests
 mvn test "-Dtest=LoginTest"
+
+WTC-3LRRNPHW

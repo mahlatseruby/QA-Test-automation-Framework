@@ -1,4 +1,4 @@
 -------------------------------------------------------------------------------
 Test set: com.qa.gui.LoginTest
 -------------------------------------------------------------------------------
-Tests run: 3, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 445.9 s -- in com.qa.gui.LoginTest
+Tests run: 3, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 145.8 s -- in com.qa.gui.LoginTest
